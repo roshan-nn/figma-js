@@ -1,0 +1,30 @@
+.content{
+    background-image: url(./Rectangle\ 6\ \(1\).png);
+    font-size: 4rem;
+   
+    font: bold;
+    max-width: 100%;
+}
+
+#description{
+    font-size: 16px;;
+}
+
+.click{
+    color: white;
+    background-color: black;
+    font-size: 30px;
+    border-radius: 20px;
+
+}
+
+.numbers{
+    font-size: 70%;
+}
+
+.descr{
+    position:absolute;
+    bottom: 10%;
+    font-size:16px ;
+}
+
