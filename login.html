@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+       </style>
+</head>
+<body>
+
+    <div class="flex grid-cols-2 bg-green-400 start" >
+        <div id="picture">
+        <img src="Illustration.png">
+    </div>
+    <div>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Password">
+    </div>
+    <div>
+        <button onclick="myFunction()">Login</button>
+        <p id="log"></p>
+    </div>
+        
+    </div>
+
+    
+    
+
+    <script>
+        let logindata = function() {
+            document.querySelector("#user").value 
+            document.querySelector("#pass").value
+        }
+    let login= function(){
+        fetch('https://dummyjson.com/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+
+            username: 'emilys',
+            password: 'emilyspass',
+            expiresInMins: 30,
+        }),
+        
+
+    })
+    .then(res => res.json())
+    .then(console.log);
+}
+    
+    function myFunction() {
+        document.getElementById("log").innerHTML= "Logged in"
+    }
+
+    </script>
+</body>
+</html>
