@@ -15,11 +15,11 @@
         <img src="Illustration.png">
     </div>
     <div>
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
+    <input id="username" type="email" placeholder="Email">
+    <input id="password" type="password" placeholder="Password">
     </div>
     <div>
-        <button onclick="myFunction()">Login</button>
+        <button onclick="loginHandler()">Login</button>
         <p id="log"></p>
     </div>
         
@@ -29,31 +29,47 @@
     
 
     <script>
-        let logindata = function() {
-            document.querySelector("#user").value 
-            document.querySelector("#pass").value
-        }
-    let login= function(){
-        fetch('https://dummyjson.com/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+       
+    
+    
+    function loginHandler() {
+        const email= document.getElementById("username").value;
+        const pass = document.getElementById("password").value;
+        console.log(email);
+        console.log(pass);
 
-            username: 'emilys',
-            password: 'emilyspass',
-            expiresInMins: 30,
-        }),
+
+        fetch('https://dummyjson.com/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    
+    username: email,
+    password: pass,
+    expiresInMins: 30, // optional, defaults to 60
+  }),
+})
+.then((res) => res.json())
+.then((logg) =>{
+    console.log(logg)
+    if(logg.accessToken)
+    {
+        window.location.href="index.html"
+    }
+    else{
+        alert("invalid");
+    }
+}
+)
+
+
+
+
         
 
-    })
-    .then(res => res.json())
-    .then(console.log);
-}
-    
-    function myFunction() {
-        document.getElementById("log").innerHTML= "Logged in"
+        
+        
     }
-
     </script>
 </body>
 </html>
