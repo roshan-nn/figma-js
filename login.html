@@ -52,9 +52,25 @@
 .then((res) => res.json())
 .then((logg) =>{
     console.log(logg)
-    if(logg.accessToken)
+    if(logg)
     {
+      if(logg.accessToken)  {
+        localStorage
+       .setItem('token',logg.accessToken)
         window.location.href="index.html"
+        
+      }
+      if(logg.firstName && logg.image){
+        const userData= {
+            name:logg.firstName,
+           image:logg.image
+            
+      }
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+      }
+       
+
     }
     else{
         alert("invalid");

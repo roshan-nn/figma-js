@@ -1,3 +1,22 @@
+
+
+var user = JSON.parse( localStorage.getItem('userData') );
+
+const username = user.name;
+const userimage= user.image;
+console.log(username,userimage,"user");
+document.getElementById("userimage").src=userimage;
+
+
+
+
+const token=localStorage.getItem('token')
+if(!token)
+       {
+          window.location.href="login.html"
+       }
+
+
 const product= fetch('https://dummyjson.com/products')
        .then(res => res.json()) 
        .then(product=>{
@@ -16,3 +35,9 @@ const product= fetch('https://dummyjson.com/products')
         `;}).join("");
         document.getElementById("display").innerHTML=display;
        })
+
+       function logoutHandler(){
+              localStorage.removeItem("token");
+              window.location.href= "login.html"
+       }
+
